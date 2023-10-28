@@ -1,0 +1,64 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+
+@keyframes shake {
+  0% {
+    transform: translateY(0);
+  }
+  20% {
+    transform: translateY(-5px);
+  }
+  40% {
+    transform: translateY(5px);
+  }
+  60% {
+    transform: translateY(-5px);
+  }
+  80% {
+    transform: translateY(5px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.heading {
+  font-family: 'Pacifico', cursive; /* Use the imported font name 'Pacifico' */
+  font-weight: 900;
+  font-size: 1.5rem;
+  animation: shake 9s infinite; /* Apply the shake animation */
+  color:white;
+  text-decoration:underline;
+}
+
+
+
+.example-spacer {
+    flex: 1 1 auto;
+  }
+
+  .fixed-header {
+    position: fixed;
+    top: 0;
+    // margin-bottom: 50 vh;
+    width: 100%;
+    z-index: 1000; /* Adjust the z-index as needed to ensure it's above other content */
+  }
+  
+/* your.component.css */
+::ng-deep .custom-mat-menu {
+  
+  font-size: 16px; /* Adjust the font size */
+  width: 15vw;    /* Set the width to make it larger */
+  /* Add any other styles you want to customize */
+}
+
+ .btn:hover {
+ background-color: #266079;
+}
+
+button {
+ color:  rgb(184, 184, 184);
+}
+
+

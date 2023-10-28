@@ -1,0 +1,34 @@
+<p>
+    <mat-toolbar  class="fixed-header" color="primary">
+        <!-- <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+          <mat-icon>menu</mat-icon>
+        </button> -->
+        <button class="ham" mat-icon-button>
+          <mat-icon >menu</mat-icon>
+          <!-- <mat-icon *ngIf="!isAdminComponent" >home</mat-icon> -->
+        </button>
+        
+      <span class="heading">Ticket Management</span>
+      <span class="example-spacer"></span>
+      <button  [matMenuTriggerFor]="menu" mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+        <mat-icon>add_box</mat-icon>
+      </button>
+                  <mat-menu  #menu="matMenu" yPosition="below" class="custom-mat-menu">
+                                 <button class="btn" mat-menu-item >
+                                         Login
+                                 </button>
+                               
+                                <button class="btn" mat-menu-item >
+                                    Visit Admin Dashboard
+                                </button>
+                   </mat-menu>
+
+      <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+        <mat-icon>share</mat-icon>
+      </button>
+    </mat-toolbar>
+    
+  </p>
+  <hr>
+
+  <hr>

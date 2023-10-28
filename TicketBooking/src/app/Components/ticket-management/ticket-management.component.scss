@@ -1,0 +1,142 @@
+
+
+
+.form-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 50vh; /* Optional: Adjust the height as needed */
+  height: 60vh;
+  margin-top: 9vh;
+  margin-bottom: 6vh ;
+}
+
+.addbtn {
+  padding-top: 4vh; 
+  button{
+    background-color: #21343e;
+    color: white;
+    border-radius: 10px;
+    margin-bottom: 1vh;
+  }
+}
+
+.addbtn button:hover {
+  color: white;
+  background-color: green;
+
+}
+
+mat-card-title{
+  text-transform: uppercase;
+}
+
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-content: flex-start;
+  margin-left: 15vh;
+  margin-bottom: 6vh; /* spacing between footer and employee body */
+
+}
+
+.example-card {
+  flex: 0 0 calc(30% - 20px); /* Cards take 30% of the width and adjust the spacing */
+  margin-right: 2vh; /* Adjust the spacing between cards */
+  margin-bottom: 20px; /* Add spacing between rows of cards */
+  // border: 1.5px solid rgb(150, 87, 9);
+  // box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s; /* transition effect for hover */
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.5);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.example-card:hover {
+  transform: translateY(-5px); /* Apply a slight lift on hover */
+  
+}
+mat-card-content{
+  font-weight: 600;
+ color: rgb(110, 69, 19);
+ font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+ padding-top: 10px;
+ padding-bottom: 10px;
+
+ p {
+     font-size: 1rem;
+     margin: 5px;
+     margin-left: 0;
+  }
+  mat-card-subtitle{
+    text-decoration: underline;
+    color: green;
+  }
+}
+
+.edit:hover {
+  background-color: rgb(59, 78, 59); /* Change background color on hover */
+  color: white; /* Change text color on hover */
+}
+
+.delete:hover {
+  background-color: red; /* Change background color on hover */
+  color: white; /* Change text color on hover */
+}
+
+
+.form-btn {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+ 
+}
+
+.cancel-button,
+.submit-button,
+.save-button {
+  flex: 1;
+  text-align: center;
+ 
+}
+
+
+
+
+
+
+
+@media (max-width: 768px) {
+  .example-card {
+      flex: 0 0 calc(100% - 20px); /* Cards take full width */
+      margin-right: 0; /* Remove the right margin to ensure full width */
+      margin-bottom: 20px; /* Add spacing between cards */
+      margin-left: 0;
+  }
+  .card-container {
+      flex-direction: column; /* Display cards vertically */
+      margin-left: 8vh;
+      margin-top: 1vh;
+  }
+  .body {
+      margin-bottom: 0; /* No gap between footer and employee body */
+  }
+}
+
+/* Your existing styles */
+
+/* Add responsive styles for screens between 768px and 1020px */
+@media screen and (min-width: 768px) and (max-width: 1020px) {
+  .example-card {
+    flex: 0 0 calc(45% - 20px); /* Adjust card width for this range */
+    margin-right: 2%; /* Add spacing between cards */
+    margin-bottom: 20px; /* Add spacing between rows of cards */
+  }
+
+  .card-container {
+    margin-left: 12vh; /* Adjust the left margin for container */
+  }
+}
+

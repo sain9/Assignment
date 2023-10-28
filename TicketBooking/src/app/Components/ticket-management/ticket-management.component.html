@@ -1,0 +1,168 @@
+
+   <div class="body">
+
+    <!-- form -->
+
+    <div class="addbtn">
+      &nbsp;&nbsp;&nbsp;
+      <button  mat-raised-button  (click)="createTicket()"><mat-icon>train</mat-icon>Buy Ticket</button>
+    &nbsp;
+</div>
+
+  <ng-container *ngIf="add || editMode"> 
+  
+    <form   [formGroup]="ticketForm" (ngSubmit)="selectedTicket ? updateTicket() : createTicket()">
+       
+
+      <div fxLayout="column" fxLayoutAlign="center center" class="form-wrapper">
+
+          <mat-card-header backGroundColor="primary" fxFlex="100%">
+            <mat-card-title style="font-weight: bold; margin-bottom: 3px;"  backGroundColor="primary">{{editMode ? 'Edit Ticket' : 'Book Ticket' }} !</mat-card-title>
+          </mat-card-header>
+        <mat-card-subtitle style="font-weight: bold; margin-bottom: 3px;">Ticket Details</mat-card-subtitle>
+
+        <!-- // name -->
+        <div fxFlex="100%">
+          <mat-form-field appearance="outline" class="form-field">
+            <mat-label>Full Name</mat-label>
+            <input class="form-control" formControlName="name" type="string" matInput placeholder="name" required>
+            <small *ngIf="!ticketForm.get('name') && ticketForm.get('name')" class="form-text text-danger">Please Enter Name.</small>  
+            <mat-icon matSuffix>account_circle</mat-icon>  
+          </mat-form-field>
+        </div>
+<!-- //Ticket Code -->
+        <div fxFlex="100%">
+          <mat-form-field appearance="outline" class="form-field">
+            <mat-label>Ticket Code</mat-label>
+              <input class="form-control" formControlName="ticketCode" type="text" matInput placeholder="ticketCode" required>
+              <mat-icon  matSuffix>label</mat-icon>
+              <!-- <small *ngIf="!empForm.get('name').valid && empForm.get('name').touched" class="form-text text-danger">Please Enter Name.</small> -->
+          </mat-form-field>
+        </div>
+      <!-- //Boarding -->
+      <div fxFlex="100%">
+        <mat-form-field>
+          <mat-label>Boarding</mat-label>
+          <mat-select formControlName="startStation">
+            <mat-option *ngFor="let station of stationOptions" [value]="station">{{'Metro Station ' + station}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+     <!-- //Destination -->
+     <div fxFlex="100%">
+      <mat-form-field>
+        <mat-label>Destination</mat-label>
+        <mat-select formControlName="lastStation">
+          <mat-option *ngFor="let station of stationOptions" [value]="station">{{'Metro Station ' + station}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    
+
+      <!-- // price -->
+      <div fxFlex="100%">
+        <mat-form-field appearance="outline" class="form-field">
+          <mat-label>Price</mat-label>
+          <input class="form-control" formControlName="price" type="string" matInput placeholder="price" required  >
+          <small *ngIf="!ticketForm.get('price') && ticketForm.get('price')" class="form-text text-danger">Price</small>  
+          <mat-icon matSuffix>money</mat-icon>  
+        </mat-form-field>
+      </div>
+
+       <!-- // expiryTime -->
+       <div fxFlex="100%">
+        <mat-form-field appearance="outline" class="form-field">
+          <mat-label>Validity</mat-label>
+          <input class="form-control" formControlName="expiryTime" type="string" matInput placeholder="expiryTime" required>
+          <small *ngIf="!ticketForm.get('expiryTime') && ticketForm.get('expiryTime')" class="form-text text-danger">Validity</small>  
+          <mat-icon matSuffix>alarm</mat-icon>  
+        </mat-form-field>
+      </div>
+
+      <!-- ticket used -->
+      <fieldset>
+        <legend>Used for Entry</legend>
+        <mat-radio-group formControlName="usedForEntry">
+          <mat-radio-button value="true">Yes</mat-radio-button>
+          <mat-radio-button value="false">No</mat-radio-button>
+        </mat-radio-group>
+      </fieldset>
+      
+      <fieldset>
+        <legend>Used for Exit</legend>
+        <mat-radio-group formControlName="usedForExit">
+          <mat-radio-button value="true">Yes</mat-radio-button>
+          <mat-radio-button value="false">No</mat-radio-button>
+        </mat-radio-group>
+      </fieldset>
+      
+      
+        <br>
+
+ <!--Go Back, Submit or Save Buttons -->
+<div fxLayout="row" fxLayoutAlign="space-between center" class="form-btn">
+      <div fxFlex="100%">
+              <button mat-stroked-button (click)="cancelEdit()" >Go back</button>
+        </div>&nbsp;
+        <div fxFlex="100%" *ngIf="!editMode">
+              <button mat-stroked-button type="submit" >Submit</button>
+         </div>
+         <div fxFlex="100%" *ngIf="editMode">
+                <button mat-stroked-button  type="submit" (click)="updateTicket()" >Save<mat-icon>done_all</mat-icon></button>
+         </div>
+  </div>
+
+</div>
+</form>
+</ng-container>
+
+
+
+
+<!-- card -->
+<ng-container *ngIf="cardView">
+
+  <div class="card-container">
+    <mat-card  class="example-card" *ngFor="let ticket of tickets ;  let ind = index">
+      <mat-card-header>
+        <mat-card-title-group>
+          <mat-card-title style="font-weight:900; color: darkcyan; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;"><mat-icon>train</mat-icon> <span>&nbsp;</span>Ticket confirmed !</mat-card-title>
+          
+        </mat-card-title-group>
+      </mat-card-header>
+      <mat-card-content>
+     <p> Name: {{ ticket.name}} </p>
+     <p> Boarding: {{ ticket.startStation}} </p>
+     <p> Destination: {{ ticket.lastStation}} </p>
+     <p> ticket code: {{ ticket.ticketCode}} </p>
+        <mat-card-subtitle>Price : {{ ticket.price }}</mat-card-subtitle>
+        <mat-card-subtitle>Expiry Time : {{ ticket.expiryTime }}</mat-card-subtitle>
+      </mat-card-content> 
+      <mat-card-actions  class="card-actions" >
+        
+          <div class="button-group">
+            <button color="accent" class="edit" mat-stroked-button (click)="editTicket(ticket)">EDIT</button>
+          </div>
+          <div class="button-group">
+            <button color="warn" class="delete" mat-stroked-button  (click)="deleteTicket(ticket)">DELETE</button>
+          </div>
+      </mat-card-actions>
+      <mat-card-footer>
+          <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+        </mat-card-footer>
+    </mat-card>
+</div>
+    <style> 
+      .example-card {
+        align-content: center;
+        max-width: 100%;
+    }
+    .card-actions {
+      display: flex;
+      justify-content: space-between;
+    }
+    </style>
+
+</ng-container>
+
+</div>
